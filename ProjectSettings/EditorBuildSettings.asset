@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/BMLTUX friday 02.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 29abf15d3ea6bc04e9031401c4797abd,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 53cedc2d49b3304438b7cb1f65aa6b5f,
+      type: 2}

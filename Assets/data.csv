@@ -1,0 +1,17 @@
+Block,TrialInBlock,Trial,Locomotion,AIGender,Temperment,Index,ProximityBeginInt,TimeToEngage,AIName,Completed,Attempts,Skipped,TrialTime
+0,0,0,Walking,Female,Neutral,1,0,0,,FALSE,0,FALSE,0
+0,1,1,Walking,Male,Neutral,0,0,0,,FALSE,0,FALSE,0
+0,2,2,Walking,Female,Nice,0,0,0,,FALSE,0,FALSE,0
+0,3,3,Walking,Female,Nice,1,0,0,,FALSE,0,FALSE,0
+0,4,4,Walking,Male,Nice,1,0,0,,FALSE,0,FALSE,0
+0,5,5,Walking,Male,Neutral,1,0,0,,FALSE,0,FALSE,0
+0,6,6,Walking,Female,Neutral,0,0,0,,FALSE,0,FALSE,0
+0,7,7,Walking,Male,Nice,0,0,0,,FALSE,0,FALSE,0
+1,0,8,Teleporting,Male,Neutral,1,0,0,,FALSE,0,FALSE,0
+1,1,9,Teleporting,Male,Nice,0,0,0,,FALSE,0,FALSE,0
+1,2,10,Teleporting,Female,Neutral,1,0,0,,FALSE,0,FALSE,0
+1,3,11,Teleporting,Female,Nice,0,0,0,,FALSE,0,FALSE,0
+1,4,12,Teleporting,Female,Neutral,0,0,0,,FALSE,0,FALSE,0
+1,5,13,Teleporting,Male,Neutral,0,0,0,,FALSE,0,FALSE,0
+1,6,14,Teleporting,Male,Nice,1,0,0,,FALSE,0,FALSE,0
+1,7,15,Teleporting,Female,Nice,1,0,0,,FALSE,0,FALSE,0

@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f52b7cbc1de94f2fbdaad822b4e3ef4, type: 3}
+  m_Name: ProximityDesign
+  m_EditorClassIdentifier: 
+  TrialRepetitions: 1
+  ExperimentRepetitions: 1
+  TrialRandomization: 1
+  TrialPermutationType: 1
+  BlockRandomization: 0
+  BlockPartialRandomizationSubType: 1
+  Factory:
+    IndependentVariables:
+    - rid: 7370195277237714944
+    - rid: 7370195277237714945
+    - rid: 7370195277237714947
+    - rid: 7370195355798601728
+    DependentVariables:
+    - rid: 7370195277237714946
+    - rid: 7370195277237714948
+    - rid: 7370195277237714949
+    ParticipantVariables:
+    - rid: 7370195357903093760
+  ExperimentSettings: {fileID: 11400000, guid: 718c8dd53465e7d41837773618a1edd7, type: 2}
+  ShowAdvancedEditor: 1
+  BlockOrderIsValid: 1
+  TrialTableGeneration: 0
+  BlockOrderConfigurations: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7370195277237714944
+      type: {class: IndependentVariableString, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: Locomotion
+        VariableType: 1
+        DataType: 3
+        ExpandSettings: 1
+        MixingType: 0
+        Block: 1
+        Values:
+        - Teleporting
+        - Walking
+        Probabilities:
+        - 0
+        - 0
+    - rid: 7370195277237714945
+      type: {class: IndependentVariableString, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: AIGender
+        VariableType: 1
+        DataType: 3
+        ExpandSettings: 1
+        MixingType: 0
+        Block: 0
+        Values:
+        - Male
+        - Female
+        Probabilities:
+        - 0
+        - 0
+    - rid: 7370195277237714946
+      type: {class: DependentVariableFloat, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: ProximityBeginInt
+        VariableType: 2
+        DataType: 2
+        ExpandSettings: 1
+        Value: 0
+        DefaultValue: 0
+    - rid: 7370195277237714947
+      type: {class: IndependentVariableString, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: Temperment
+        VariableType: 1
+        DataType: 3
+        ExpandSettings: 1
+        MixingType: 0
+        Block: 0
+        Values:
+        - Nice
+        - Neutral
+        Probabilities:
+        - 0
+        - 0
+    - rid: 7370195277237714948
+      type: {class: DependentVariableFloat, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: TimeToEngage
+        VariableType: 2
+        DataType: 2
+        ExpandSettings: 1
+        Value: 0
+        DefaultValue: 0
+    - rid: 7370195277237714949
+      type: {class: DependentVariableString, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: AIName
+        VariableType: 2
+        DataType: 3
+        ExpandSettings: 1
+        Value: 
+        DefaultValue: 
+    - rid: 7370195355798601728
+      type: {class: IndependentVariableInt, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: Index
+        VariableType: 1
+        DataType: 1
+        ExpandSettings: 1
+        MixingType: 0
+        Block: 0
+        Values: 0000000001000000
+        Probabilities:
+        - 0
+        - 0
+    - rid: 7370195357903093760
+      type: {class: ParticipantVariableInt, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: Age
+        VariableType: 3
+        DataType: 1
+        ExpandSettings: 1
+        Value: 0
+        ConstrainValues: 0
+        Values: 
+        PossibleValues: 

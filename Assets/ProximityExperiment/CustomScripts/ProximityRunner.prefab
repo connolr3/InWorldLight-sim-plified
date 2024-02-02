@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3330981454761459157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4550129680602468913}
+  - component: {fileID: 4624745882777497317}
+  m_Layer: 0
+  m_Name: ProximityRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4550129680602468913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330981454761459157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4624745882777497317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330981454761459157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89acb58a2f63c2a4b8699e5d1c6e8961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experimentDesignFile: {fileID: 11400000, guid: da8542f76dc224f4cb38dc90857f274d,
+    type: 2}
+  scriptReferences:
+    DragTrialScriptHere: {fileID: 11500000, guid: 78356d8608928c44e822c0dec46127d4,
+      type: 3}
+    DragBlockScriptHere: {fileID: 11500000, guid: 0361825d50118e34f8b41f72f6073981,
+      type: 3}
+    DragExperimentScriptHere: {fileID: 11500000, guid: 614c4524ff5d0a3418bb05e3a1aa857e,
+      type: 3}
+  Ended: 0
+  Running: 1
+  NiceFemales:
+  - {fileID: 2301427115833649265, guid: a1aa595e5252c334cac6f2e69e270f7b, type: 3}
+  - {fileID: 2536889691597581492, guid: b2ddccc862670f047ad3e01c9050aca1, type: 3}
+  NeutralFemales:
+  - {fileID: 612556146213276854, guid: 17a703d10c918cc4f91e3e98a5830254, type: 3}
+  - {fileID: 8246443733421304163, guid: 276e7cbeff7b6164fbb94de146237a54, type: 3}
+  NiceMales:
+  - {fileID: 4846797616512659841, guid: e5f96c6a687ecea4a961c3f9a0468d8a, type: 3}
+  - {fileID: 1932785119265393962, guid: d8af9f8b13a35b34883e3a2d790906a8, type: 3}
+  NeutralMales:
+  - {fileID: 4605737699498047933, guid: 3e0f86d5d7b2b554da21ec03fd090c49, type: 3}
+  - {fileID: 5628221665485797541, guid: 3cb7184163e09394a81dc9db9a27590b, type: 3}
+  MyRig: {fileID: 0}
+  Components: []
+  SpawnA: {fileID: 0}
+  SpawnB: {fileID: 0}
+  NextTrial:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Next Trial
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 130efb2f-c4a9-4923-9c71-bd1a95fa94db
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  inworldCon: {fileID: 0}
+  csvReader: {fileID: 0}

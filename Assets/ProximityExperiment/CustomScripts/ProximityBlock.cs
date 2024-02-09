@@ -3,7 +3,7 @@ using System.Data;
 using bmlTUX;
 // ReSharper disable once RedundantUsingDirective
 using UnityEngine;
-
+using System.Collections;
 
 /// <summary>
 /// Classes that inherit from Block define custom behaviour for your experiment's blocks.
@@ -19,11 +19,12 @@ public class ProximityBlock : Block {
     
     // // You usually want to store a reference to your Experiment runner
      ProximityRunner myRunner;
-
+    //DataTable trialTable myTable;
 
     // Required Constructor. Good place to set up references to objects in the unity scene
     public ProximityBlock(ExperimentRunner runner, DataTable trialTable, DataRow data, int index) : base(runner, trialTable, data, index) {
          myRunner = (ProximityRunner)runner;  //cast the generic runner to your custom type.
+      //   myTable = (DataTable) trialTable;
         // GameObject myGameObject = myRunner.MyGameObject;  // get reference to gameObject stored in your custom runner
     
     }
@@ -32,6 +33,7 @@ public GameObject rig;
 public  string[] components ;
     // Optional Pre-Block code. Useful for calibration and setup common to all blocks. Executes in a single frame at the start of the block
     protected override void PreMethod() {
+       // Debug.Log(myTable);
 rig =  myRunner.MyRig;
         string thisBlocksLocomotion = (string)Data["Locomotion"]; // Read values of independent variables
         components = myRunner.Components;
@@ -60,7 +62,7 @@ public void componentSet(bool enabled){
                 if (component != null)
                 {
                     component.enabled = enabled;
-                    Debug.Log($"Disabled component: {componentName}");
+                    Debug.Log($"Component: {componentName}. is enabled:{enabled}");
                 }
                 else
                 {

@@ -28,6 +28,7 @@ MonoBehaviour:
     - rid: 7370195277237714946
     - rid: 7370195277237714948
     - rid: 7370195277237714949
+    - rid: 321306078948360192
     ParticipantVariables:
     - rid: 7370195357903093760
   ExperimentSettings: {fileID: 11400000, guid: 718c8dd53465e7d41837773618a1edd7, type: 2}
@@ -38,6 +39,16 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 321306078948360192
+      type: {class: DependentVariableFloat, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: ProximityEnd
+        VariableType: 2
+        DataType: 2
+        ExpandSettings: 1
+        Value: 0
+        DefaultValue: 0
     - rid: 7370195277237714944
       type: {class: IndependentVariableString, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
         asm: bmlTUX}
@@ -74,7 +85,7 @@ MonoBehaviour:
       type: {class: DependentVariableFloat, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
         asm: bmlTUX}
       data:
-        Name: ProximityBeginInt
+        Name: ProximityBegin
         VariableType: 2
         DataType: 2
         ExpandSettings: 1
@@ -138,7 +149,7 @@ MonoBehaviour:
         VariableType: 3
         DataType: 1
         ExpandSettings: 1
-        Value: 0
+        Value: 23
         ConstrainValues: 0
         Values: 
         PossibleValues: 

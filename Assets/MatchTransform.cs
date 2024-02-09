@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;//required to read input
+//using Inworld;
 
 public class MatchTransform : MonoBehaviour
 {
@@ -17,6 +18,7 @@ void Start(){
 
 }
     void Update(){
+       // Debug.Log(InworldController.CurrentCharacter);
         if(Input.GetKey("m")){
             Match();
         }

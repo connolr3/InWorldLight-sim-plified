@@ -25,7 +25,7 @@ public class ProximityTrial : Trial {
     }
 
     GameObject inSceneAI;
-    GameObject LastSceneAI;
+   // GameObject LastSceneAI;
 
 
         public void matchTransform( GameObject toChange,Transform toMatch){
@@ -40,19 +40,21 @@ public Texture thisScenesTexture;
         string thisTemperment = (string)Data["Temperment"];
         string thisTGender = (string)Data["AIGender"];
         int thisIndex = (int)Data["Index"];
+        
         displayAI(thisTemperment, thisTGender,thisIndex);
         if(thisScenesTexture!=null){
         myRunner.ImageHolder.texture = thisScenesTexture;
         }
-         Data["AIName"] = inSceneAI.name;
 
+         Data["AIName"] = inSceneAI.name;
+    setCurrentCharacter();
      //display painting
     }
 
   
 
 public void displayAI(string Temperment, string Gender, int index){
-    LastSceneAI=inSceneAI;
+   // LastSceneAI=inSceneAI;
   if(Gender=="Female"&&Temperment=="Nice"){
         inSceneAI=myRunner.NiceFemales[index];
         thisScenesTexture= myRunner.NiceFemalesPaintings[index];
@@ -73,6 +75,12 @@ public void displayAI(string Temperment, string Gender, int index){
             Debug.Log("Error in variable names... no matches found");
         }
         inSceneAI.SetActive(true);
+  Transform armature = inSceneAI.transform.Find("Armature");
+if (armature != null) {
+    armature.gameObject.SetActive(true);
+}
+
+        
 if(index%2==0)
 matchTransform(inSceneAI,myRunner.SpawnA);
     else
@@ -81,11 +89,31 @@ matchTransform(inSceneAI,myRunner.SpawnA);
 
     }
 
+public void setCurrentCharacter(){
+  
+    Inworld.InworldCharacter inworldCharacterComponent = inSceneAI.GetComponent<Inworld.InworldCharacter>();
+
+// Check if the component is not null before assigning
+if (inworldCharacterComponent != null)
+{
+    InworldController.CurrentCharacter = inworldCharacterComponent;
+}
+else
+{
+    // Handle the case where the component is not found
+    Debug.LogError("InworldCharacter component not found on the GameObject.");
+}
+    Debug.Log(inSceneAI.name);
+Debug.Log("Inworld character set to:"+inSceneAI.name);
+Debug.Log("Inworld current character set to:"+InworldController.CurrentCharacter);
+}
+
         public void DisableCanvas(){
             GameObject canvasObject = inSceneAI.transform.Find("Canvas").gameObject;
         if (canvasObject != null)
         {
-            canvasObject.SetActive(false);
+          Canvas canvasComponent = canvasObject.GetComponent<Canvas>();
+            canvasComponent.enabled = false;
         }
         }
     // Optional Pre-Trial code. Useful for waiting for the participant to
@@ -119,6 +147,8 @@ bool waitingForParticipantResponse=true;
 
 protected override IEnumerator RunMainCoroutine()
 {
+   // Debug.Log(inSceneAI.name);
+   // setCurrentCharacter();
     waitingForParticipantResponse = true;
     Debug.Log("Interact with the object to end this trial.");
 
@@ -183,7 +213,7 @@ private void OnObjectSelected(XRBaseInteractor interactor)
     // Executes in a single frame at the end of each trial
     protected override void PostMethod() {
         // How to write results to dependent variables: 
-         Data["ProximityBeginInt"] =2f;
+         Data["ProximityBegin"] =2f;
           Data["TimeToEngage"] = 5f;
           
     inSceneAI.SetActive(false);

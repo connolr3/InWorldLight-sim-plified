@@ -81,11 +81,11 @@ if (armature != null) {
 }
 
         
-if(index%2==0)
+if(IndexInBlock%2==0)
 matchTransform(inSceneAI,myRunner.SpawnA);
     else
  matchTransform(inSceneAI,myRunner.SpawnB);
-    DisableCanvas();
+   // DisableCanvas();
 
     }
 

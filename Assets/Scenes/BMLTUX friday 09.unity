@@ -897,14 +897,22 @@ MonoBehaviour:
   NiceFemalesPaintings:
   - {fileID: 2800000, guid: 6d863fa78222a5b48a2f3b565313482d, type: 3}
   - {fileID: 2800000, guid: 400d9f8efc11c964d810de031b7e14a0, type: 3}
-  NeutralFemalesPaintings:
   - {fileID: 2800000, guid: 204155c879b2d754c89b7fa5087450da, type: 3}
   - {fileID: 2800000, guid: 339746eb7b192b742a14bc98b83198ae, type: 3}
-  NiceMalesPaintings:
-  - {fileID: 2800000, guid: a41688ae679840e42b0a9bf1d5c261ec, type: 3}
+  NeutralFemalesPaintings:
+  - {fileID: 2800000, guid: 5863034bd3fb96344b9886ab954512ff, type: 3}
   - {fileID: 2800000, guid: c26ebef238ff4ec4e9d58b6983452bcd, type: 3}
+  - {fileID: 2800000, guid: 86a5833915941c541916041e60baa7f0, type: 3}
+  - {fileID: 2800000, guid: 0441d61d2bbeab84da18f323cc03fc14, type: 3}
+  NiceMalesPaintings:
+  - {fileID: 2800000, guid: cd62ca3f2c1033a45847801a508df28b, type: 3}
+  - {fileID: 2800000, guid: 1bd63ce9b40ae27499ffa0047f4bebd2, type: 3}
+  - {fileID: 2800000, guid: 81eef34fe8dd2fa479a05f69bbe751bb, type: 3}
+  - {fileID: 2800000, guid: a62ca7bcb7d4eed449b2500cd1d11909, type: 3}
   NeutralMalesPaintings:
-  - {fileID: 2800000, guid: a41688ae679840e42b0a9bf1d5c261ec, type: 3}
+  - {fileID: 2800000, guid: 505bbde2cbdccbe459193eef0849b167, type: 3}
+  - {fileID: 2800000, guid: b1629d3a96dba5a4cb3436ff76675971, type: 3}
+  - {fileID: 2800000, guid: ee699934964abb744a948ad31ee5dd1f, type: 3}
   - {fileID: 2800000, guid: a41688ae679840e42b0a9bf1d5c261ec, type: 3}
   csvReader: {fileID: 0}
 --- !u!4 &253338162

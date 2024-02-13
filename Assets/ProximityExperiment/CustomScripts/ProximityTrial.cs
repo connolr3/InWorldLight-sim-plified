@@ -15,209 +15,272 @@ using UnityEngine.InputSystem;
 ///
 /// You can delete any unused methods and unwanted comments. The only required parts are the constructor and the MainCoroutine.
 /// </summary>
-public class ProximityTrial : Trial {
+public class ProximityTrial : Trial
+{
 
-     ProximityRunner myRunner;
+    ProximityRunner myRunner;
+    string thisGender;
+    string thisTemperment;
 
     // Required Constructor.
-    public ProximityTrial(ExperimentRunner runner, DataRow data) : base(runner, data) {
-         myRunner = (ProximityRunner)runner;  //cast the generic runner to your custom type.  
+    public ProximityTrial(ExperimentRunner runner, DataRow data) : base(runner, data)
+    {
+        myRunner = (ProximityRunner)runner;  //cast the generic runner to your custom type.  
     }
 
     GameObject inSceneAI;
-   // GameObject LastSceneAI;
+    int AccessIndex;
+    bool[] checkOrder = new bool[4];
 
-
-        public void matchTransform( GameObject toChange,Transform toMatch){
+    public void matchTransform(GameObject toChange, Transform toMatch)
+    {
         toChange.transform.position = toMatch.position;
-            toChange.transform.rotation =toMatch.rotation;
-        }
-
-public Texture thisScenesTexture;
-    // Optional Pre-Trial code. Useful for setting unity scene for trials. Executes in one frame at the start of each trial
-    protected override void PreMethod() {
-     //   Display character
-        string thisTemperment = (string)Data["Temperment"];
-        string thisTGender = (string)Data["AIGender"];
-        int thisIndex = (int)Data["Index"];
-        
-        displayAI(thisTemperment, thisTGender,thisIndex);
-        if(thisScenesTexture!=null){
-        myRunner.ImageHolder.texture = thisScenesTexture;
-        }
-
-         Data["AIName"] = inSceneAI.name;
-    setCurrentCharacter();
-     //display painting
+        toChange.transform.rotation = toMatch.rotation;
     }
 
-  
+    public Texture thisScenesTexture;
+    // Optional Pre-Trial code. Useful for setting unity scene for trials. Executes in one frame at the start of each trial
+    protected override void PreMethod()
+    {
+        thisTemperment = (string)Data["Temperment"];
+        thisGender = (string)Data["AIGender"];
+       // int thisIndex = (int)Data["Index"];
+        getRandomIndex(thisTemperment, thisGender);
+        displayAI();
+        if (thisScenesTexture != null)
+        {
+            myRunner.ImageHolder.texture = thisScenesTexture;
+        }
 
-public void displayAI(string Temperment, string Gender, int index){
-   // LastSceneAI=inSceneAI;
-  if(Gender=="Female"&&Temperment=="Nice"){
-        inSceneAI=myRunner.NiceFemales[index];
-        thisScenesTexture= myRunner.NiceFemalesPaintings[index];
+        Data["AIName"] = inSceneAI.name;
+        setCurrentCharacter();
+        //display painting
+    }
+
+
+    public int getRandomIndex(string Temperment, string Gender)
+    {
+        if (Gender == "Female" && Temperment == "Nice")
+        {
+            checkOrder = myRunner.NiceFemalesAccessed;
         }
-        else if(Gender=="Male"&&Temperment=="Nice"){
-        inSceneAI=myRunner.NiceMales[index];
-          thisScenesTexture= myRunner.NiceMalesPaintings[index];
+        else if (Gender == "Male" && Temperment == "Nice")
+        {
+            checkOrder = myRunner.NiceMalesAccessed;
         }
-        else if(Gender=="Female"&&Temperment=="Neutral"){
-        inSceneAI=myRunner.NeutralFemales[index];
-          thisScenesTexture= myRunner.NeutralFemalesPaintings[index];
+        else if (Gender == "Female" && Temperment == "Neutral")
+        {
+            checkOrder = myRunner.NeutralFemalesAccessed;
         }
-        else if(Gender=="Male"&&Temperment=="Neutral"){
-        inSceneAI=myRunner.NeutralMales[index];
-          thisScenesTexture= myRunner.NeutralMalesPaintings[index];
+        else if (Gender == "Male" && Temperment == "Neutral")
+        {
+            checkOrder = myRunner.NeutralMalesAccessed;
         }
-        else{
+        else
+        {
+            Debug.Log("Error in variable names... no matches found");
+        }
+        while (true) // Corrected loop condition
+        {
+            int index = Random.Range(0, 4);
+            if (!checkOrder[index])
+            {
+                AccessIndex = index;
+                return AccessIndex;
+            }
+            // No need for a return statement here; continue the loop if checkOrder[index] is true
+        }
+
+    }
+
+    public void setAccessed()
+    {
+        Data["AccessIndex"] = AccessIndex;
+        if (thisGender == "Female" && thisTemperment == "Nice")
+        {
+            myRunner.NiceFemalesAccessed[AccessIndex] = true;
+        }
+        else if (thisGender == "Male" && thisTemperment == "Nice")
+        {
+            myRunner.NiceMalesAccessed[AccessIndex] = true;
+        }
+        else if (thisGender == "Female" && thisTemperment == "Neutral")
+        {
+            myRunner.NeutralFemalesAccessed[AccessIndex] = true;
+        }
+        else if (thisGender == "Male" && thisTemperment == "Neutral")
+        {
+            myRunner.NeutralMalesAccessed[AccessIndex] = true;
+        }
+        else
+        {
+            Debug.Log("Error in variable names... no matches found");
+        }
+    }
+
+    public void displayAI()
+    {
+        // LastSceneAI=inSceneAI;
+        if (thisGender == "Female" && thisTemperment == "Nice")
+        {
+            inSceneAI = myRunner.NiceFemales[AccessIndex];
+            thisScenesTexture = myRunner.NiceFemalesPaintings[AccessIndex];
+        }
+        else if (thisGender == "Male" && thisTemperment == "Nice")
+        {
+            inSceneAI = myRunner.NiceMales[AccessIndex];
+            thisScenesTexture = myRunner.NiceMalesPaintings[AccessIndex];
+        }
+        else if (thisGender == "Female" && thisTemperment == "Neutral")
+        {
+            inSceneAI = myRunner.NeutralFemales[AccessIndex];
+            thisScenesTexture = myRunner.NeutralFemalesPaintings[AccessIndex];
+        }
+        else if (thisGender == "Male" && thisTemperment == "Neutral")
+        {
+            inSceneAI = myRunner.NeutralMales[AccessIndex];
+            thisScenesTexture = myRunner.NeutralMalesPaintings[AccessIndex];
+        }
+        else
+        {
             Debug.Log("Error in variable names... no matches found");
         }
         inSceneAI.SetActive(true);
-  Transform armature = inSceneAI.transform.Find("Armature");
-if (armature != null) {
-    armature.gameObject.SetActive(true);
-}
+        Transform armature = inSceneAI.transform.Find("Armature");
+        if (armature != null)
+        {
+            armature.gameObject.SetActive(true);
+        }
 
-        
-if(IndexInBlock%2==0)
-matchTransform(inSceneAI,myRunner.SpawnA);
-    else
- matchTransform(inSceneAI,myRunner.SpawnB);
-   // DisableCanvas();
+
+        if (IndexInBlock % 2 == 0)
+            matchTransform(inSceneAI, myRunner.SpawnA);
+        else
+            matchTransform(inSceneAI, myRunner.SpawnB);
+         DisableCanvas();
 
     }
 
-public void setCurrentCharacter(){
-  
-    Inworld.InworldCharacter inworldCharacterComponent = inSceneAI.GetComponent<Inworld.InworldCharacter>();
+    public void setCurrentCharacter()
+    {
 
-// Check if the component is not null before assigning
-if (inworldCharacterComponent != null)
-{
-    InworldController.CurrentCharacter = inworldCharacterComponent;
-}
-else
-{
-    // Handle the case where the component is not found
-    Debug.LogError("InworldCharacter component not found on the GameObject.");
-}
-    Debug.Log(inSceneAI.name);
-Debug.Log("Inworld character set to:"+inSceneAI.name);
-Debug.Log("Inworld current character set to:"+InworldController.CurrentCharacter);
-}
+        Inworld.InworldCharacter inworldCharacterComponent = inSceneAI.GetComponent<Inworld.InworldCharacter>();
 
-        public void DisableCanvas(){
-            GameObject canvasObject = inSceneAI.transform.Find("Canvas").gameObject;
+        // Check if the component is not null before assigning
+        if (inworldCharacterComponent != null)
+        {
+            InworldController.CurrentCharacter = inworldCharacterComponent;
+        }
+        else
+        {
+            // Handle the case where the component is not found
+            Debug.LogError("InworldCharacter component not found on the GameObject.");
+        }
+        Debug.Log(inSceneAI.name);
+        Debug.Log("Inworld character set to:" + inSceneAI.name);
+        Debug.Log("Inworld current character set to:" + InworldController.CurrentCharacter);
+    }
+
+    public void DisableCanvas()
+    {
+        GameObject canvasObject = inSceneAI.transform.Find("Canvas").gameObject;
         if (canvasObject != null)
         {
-          Canvas canvasComponent = canvasObject.GetComponent<Canvas>();
+            Canvas canvasComponent = canvasObject.GetComponent<Canvas>();
             canvasComponent.enabled = false;
         }
-        }
+    }
     // Optional Pre-Trial code. Useful for waiting for the participant to
     // do something before each trial (multiple frames). Also might be useful for fixation points etc.
-    protected override IEnumerator PreCoroutine() {
+    protected override IEnumerator PreCoroutine()
+    {
         yield return null; //required for coroutine
     }
 
-    public void beginNextTrial(){
-  ExperimentEvents.SkipToNextTrial();
-    }
-    // Main Trial Execution Code.
-  /*  protected override IEnumerator RunMainCoroutine() {
-    
-        // You might want to do a while-loop to wait for participant response: 
-        bool waitingForParticipantResponse = true;
-        Debug.Log("Press the spacebar to end this trial.");
-        while (waitingForParticipantResponse) {   // keep check each frame until waitingForParticipantResponse set to false.
-            if (Input.GetKeyDown(KeyCode.Space)) { // check return key pressed
-                waitingForParticipantResponse = false;  // escape from while loop
-            }
-        
-            yield return null; // wait for next frame while allowing rest of program to run (without this the program will hang in an infinite loop)
-        }
-    
-    }*/
-
-
-
-bool waitingForParticipantResponse=true;
-
-protected override IEnumerator RunMainCoroutine()
-{
-   // Debug.Log(inSceneAI.name);
-   // setCurrentCharacter();
-    waitingForParticipantResponse = true;
-    Debug.Log("Interact with the object to end this trial.");
-
-    // Wait for the next frame while allowing the rest of the program to run
-    yield return null;
-
-    // Subscribe to the XR Interaction events specific to XRSimpleInteractable
-    myRunner.xrSimpleInteractable.onSelectEntered.AddListener(OnObjectSelected);
-
-    while (waitingForParticipantResponse)
+    public void beginNextTrial()
     {
-        yield return null;
+        ExperimentEvents.SkipToNextTrial();
     }
 
-    // Unsubscribe from the XR Interaction events
-    myRunner.xrSimpleInteractable.onSelectEntered.RemoveListener(OnObjectSelected);
-}
 
-private void OnObjectSelected(XRBaseInteractor interactor)
-{
-    Debug.Log("Object selected. Ending the trial.");
-    waitingForParticipantResponse = false;
-}
+    bool waitingForParticipantResponse = true;
 
- /*
- THIS WORKS!
- 
- 
- protected override IEnumerator RunMainCoroutine()
+    protected override IEnumerator RunMainCoroutine()
     {
-         waitingForParticipantResponse = true;
-        Debug.Log("Press the spacebar or VR input to end this trial.");
+        // Debug.Log(inSceneAI.name);
+        // setCurrentCharacter();
+        waitingForParticipantResponse = true;
+        Debug.Log("Interact with the object to end this trial.");
 
         // Wait for the next frame while allowing the rest of the program to run
         yield return null;
 
-        // Subscribe to the XR Input event
-        myRunner.NextTrial.action.performed += OnNextTrialAction;
+        // Subscribe to the XR Interaction events specific to XRSimpleInteractable
+        myRunner.xrSimpleInteractable.onSelectEntered.AddListener(OnObjectSelected);
 
         while (waitingForParticipantResponse)
         {
             yield return null;
         }
 
-        // Unsubscribe from the XR Input event
-        myRunner.NextTrial.action.performed -= OnNextTrialAction;
+        // Unsubscribe from the XR Interaction events
+        myRunner.xrSimpleInteractable.onSelectEntered.RemoveListener(OnObjectSelected);
     }
 
-    private void OnNextTrialAction(InputAction.CallbackContext context)
+    private void OnObjectSelected(XRBaseInteractor interactor)
     {
-        Debug.Log("Next trial action performed.");
+        Debug.Log("Object selected. Ending the trial.");
         waitingForParticipantResponse = false;
     }
-*/
+
+    /*
+    THIS WORKS!
+
+
+    protected override IEnumerator RunMainCoroutine()
+       {
+            waitingForParticipantResponse = true;
+           Debug.Log("Press the spacebar or VR input to end this trial.");
+
+           // Wait for the next frame while allowing the rest of the program to run
+           yield return null;
+
+           // Subscribe to the XR Input event
+           myRunner.NextTrial.action.performed += OnNextTrialAction;
+
+           while (waitingForParticipantResponse)
+           {
+               yield return null;
+           }
+
+           // Unsubscribe from the XR Input event
+           myRunner.NextTrial.action.performed -= OnNextTrialAction;
+       }
+
+       private void OnNextTrialAction(InputAction.CallbackContext context)
+       {
+           Debug.Log("Next trial action performed.");
+           waitingForParticipantResponse = false;
+       }
+   */
 
     // Optional Post-Trial code. Useful for waiting for the participant to do something after each trial (multiple frames)
-    protected override IEnumerator PostCoroutine() {
+    protected override IEnumerator PostCoroutine()
+    {
         yield return null;
     }
 
     // Optional Post-Trial code. useful for writing data to dependent variables and for resetting everything.
     // Executes in a single frame at the end of each trial
-    protected override void PostMethod() {
+    protected override void PostMethod()
+    {
+        setAccessed();
         // How to write results to dependent variables: 
-         Data["ProximityBegin"] =2f;
-          Data["TimeToEngage"] = 5f;
-          
-    inSceneAI.SetActive(false);
-    InworldController.CurrentCharacter = null;
+        Data["ProximityBegin"] = 2f;
+        Data["TimeToEngage"] = 5f;
+
+        inSceneAI.SetActive(false);
+        InworldController.CurrentCharacter = null;
     }
 }
 

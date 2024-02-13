@@ -112,6 +112,102 @@ MonoBehaviour:
       thumbnailProgress: 0
       avatarProgress: 0
     thumbnail: {fileID: 0}
+  - agentId: 
+    brainName: workspaces/unity_npcs-iwomj/characters/theo
+    givenName: Theo
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/8cd00d3b-d525-4f4d-8b2c-f48feb2e9f94.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/8cd00d3b-d525-4f4d-8b2c-f48feb2e9f94_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/8cd00d3b-d525-4f4d-8b2c-f48feb2e9f94_posture.jpg
+      avatarImg: 
+      avatarImgOriginal: 
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
+  - agentId: 
+    brainName: workspaces/unity_npcs-iwomj/characters/david
+    givenName: David
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/80cbe50e-69c6-4b65-a628-d088148889a1.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/80cbe50e-69c6-4b65-a628-d088148889a1_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/80cbe50e-69c6-4b65-a628-d088148889a1_posture.jpg
+      avatarImg: 
+      avatarImgOriginal: 
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
+  - agentId: 
+    brainName: workspaces/unity_npcs-iwomj/characters/emma
+    givenName: Emma
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/9ef2059a-978b-4fdf-82e2-c2de5d94079a.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/9ef2059a-978b-4fdf-82e2-c2de5d94079a_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/9ef2059a-978b-4fdf-82e2-c2de5d94079a_posture.jpg
+      avatarImg: 
+      avatarImgOriginal: 
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
+  - agentId: 
+    brainName: workspaces/unity_npcs-iwomj/characters/helen
+    givenName: Helen
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/8bc3bd5d-36fd-4e6f-b3c7-56673aa1933d.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/8bc3bd5d-36fd-4e6f-b3c7-56673aa1933d_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/8bc3bd5d-36fd-4e6f-b3c7-56673aa1933d_posture.jpg
+      avatarImg: 
+      avatarImgOriginal: 
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
+  - agentId: 
+    brainName: workspaces/unity_npcs-iwomj/characters/jack
+    givenName: Jack
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/60fc8df5-2d1f-40b4-838b-68e067edba07.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/60fc8df5-2d1f-40b4-838b-68e067edba07_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/60fc8df5-2d1f-40b4-838b-68e067edba07_posture.jpg
+      avatarImg: 
+      avatarImgOriginal: 
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
+  - agentId: 
+    brainName: workspaces/unity_npcs-iwomj/characters/jane
+    givenName: Jane
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/6fb27523-5c9e-453f-a381-ca6a3357c70d.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/6fb27523-5c9e-453f-a381-ca6a3357c70d_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/6fb27523-5c9e-453f-a381-ca6a3357c70d_posture.jpg
+      avatarImg: 
+      avatarImgOriginal: 
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
+  - agentId: 
+    brainName: workspaces/unity_npcs-iwomj/characters/rachel
+    givenName: Rachel
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/fd4e9b63-1500-40d9-88e6-4f1525c771f1.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/fd4e9b63-1500-40d9-88e6-4f1525c771f1_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/fd4e9b63-1500-40d9-88e6-4f1525c771f1_posture.jpg
+      avatarImg: 
+      avatarImgOriginal: 
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
+  - agentId: 
+    brainName: workspaces/unity_npcs-iwomj/characters/sam
+    givenName: Sam
+    characterAssets:
+      rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/6cd14811-91a0-47fb-9074-79224d55834c.glb
+      rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/6cd14811-91a0-47fb-9074-79224d55834c_portrait.jpg
+      rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/6cd14811-91a0-47fb-9074-79224d55834c_posture.jpg
+      avatarImg: 
+      avatarImgOriginal: 
+      thumbnailProgress: 0
+      avatarProgress: 0
+    thumbnail: {fileID: 0}
   capabilities:
     audio: 1
     emotions: 1

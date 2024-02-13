@@ -37,9 +37,22 @@ public RawImage ImageHolder;
       public Texture [] NeutralFemalesPaintings;
          public Texture [] NiceMalesPaintings;
       public Texture [] NeutralMalesPaintings;
+    [HideInInspector]
+
+
+
+public bool[] NiceFemalesAccessed = new bool[4];
+public bool[] NeutralFemalesAccessed = new bool[4];
+public  bool[] NiceMalesAccessed = new bool[4];
+public bool[] NeutralMalesAccessed = new bool[4];
+
 
 
 public CSVReader csvReader;
+
+
+
+
 
  public void allocate(){
     names = new string[16];

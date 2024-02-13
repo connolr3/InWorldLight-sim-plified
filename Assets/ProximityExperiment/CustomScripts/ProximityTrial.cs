@@ -42,21 +42,37 @@ public class ProximityTrial : Trial
     // Optional Pre-Trial code. Useful for setting unity scene for trials. Executes in one frame at the start of each trial
     protected override void PreMethod()
     {
-        thisTemperment = (string)Data["Temperment"];
-        thisGender = (string)Data["AIGender"];
-       // int thisIndex = (int)Data["Index"];
         getRandomIndex(thisTemperment, thisGender);
-        displayAI();
+        setTrialVariables();
         if (thisScenesTexture != null)
         {
             myRunner.ImageHolder.texture = thisScenesTexture;
         }
-
-        Data["AIName"] = inSceneAI.name;
-        setCurrentCharacter();
-        //display painting
+    }
+    private bool participantIsReady = false;
+    protected override IEnumerator PreCoroutine()
+    {
+        participantIsReady = false;
+        myRunner.ReadyInteractable.onSelectEntered.AddListener(OnReadyObjectSelected);
+        while (!participantIsReady)
+        {
+            yield return null;
+        }
+        Debug.Log("Participant is ready. Starting the trial.");
+        // Unsubscribe from the XR Interaction events
+        myRunner.ReadyInteractable.onSelectEntered.RemoveListener(OnReadyObjectSelected);
     }
 
+    private void OnReadyObjectSelected(XRBaseInteractor interactor)
+    {
+        myRunner.ImageHolder.texture = null; // Set the texture to null
+        myRunner.PreTrial.SetActive(false);
+        myRunner.PostTrial.SetActive(true);
+        displayAI();
+        Data["AIName"] = inSceneAI.name;
+        setCurrentCharacter();
+        participantIsReady = true;
+    }
 
     public int getRandomIndex(string Temperment, string Gender)
     {
@@ -92,7 +108,6 @@ public class ProximityTrial : Trial
         }
 
     }
-
     public void setAccessed()
     {
         Data["AccessIndex"] = AccessIndex;
@@ -118,9 +133,11 @@ public class ProximityTrial : Trial
         }
     }
 
-    public void displayAI()
+    public void setTrialVariables()
     {
         // LastSceneAI=inSceneAI;
+        thisTemperment = (string)Data["Temperment"];
+        thisGender = (string)Data["AIGender"];
         if (thisGender == "Female" && thisTemperment == "Nice")
         {
             inSceneAI = myRunner.NiceFemales[AccessIndex];
@@ -145,39 +162,33 @@ public class ProximityTrial : Trial
         {
             Debug.Log("Error in variable names... no matches found");
         }
+    }
+    public void displayAI()
+    {
         inSceneAI.SetActive(true);
         Transform armature = inSceneAI.transform.Find("Armature");
         if (armature != null)
-        {
             armature.gameObject.SetActive(true);
-        }
-
 
         if (IndexInBlock % 2 == 0)
             matchTransform(inSceneAI, myRunner.SpawnA);
         else
             matchTransform(inSceneAI, myRunner.SpawnB);
-         DisableCanvas();
-
+        DisableCanvas();
     }
 
     public void setCurrentCharacter()
     {
 
         Inworld.InworldCharacter inworldCharacterComponent = inSceneAI.GetComponent<Inworld.InworldCharacter>();
-
-        // Check if the component is not null before assigning
         if (inworldCharacterComponent != null)
         {
             InworldController.CurrentCharacter = inworldCharacterComponent;
         }
         else
         {
-            // Handle the case where the component is not found
             Debug.LogError("InworldCharacter component not found on the GameObject.");
         }
-        Debug.Log(inSceneAI.name);
-        Debug.Log("Inworld character set to:" + inSceneAI.name);
         Debug.Log("Inworld current character set to:" + InworldController.CurrentCharacter);
     }
 
@@ -192,40 +203,36 @@ public class ProximityTrial : Trial
     }
     // Optional Pre-Trial code. Useful for waiting for the participant to
     // do something before each trial (multiple frames). Also might be useful for fixation points etc.
-    protected override IEnumerator PreCoroutine()
-    {
-        yield return null; //required for coroutine
-    }
-
     public void beginNextTrial()
     {
         ExperimentEvents.SkipToNextTrial();
     }
 
-
     bool waitingForParticipantResponse = true;
-
     protected override IEnumerator RunMainCoroutine()
     {
-        // Debug.Log(inSceneAI.name);
-        // setCurrentCharacter();
+        // Debug.Log("Starting RunMainCoroutine");
         waitingForParticipantResponse = true;
         Debug.Log("Interact with the object to end this trial.");
 
         // Wait for the next frame while allowing the rest of the program to run
         yield return null;
 
-        // Subscribe to the XR Interaction events specific to XRSimpleInteractable
-        myRunner.xrSimpleInteractable.onSelectEntered.AddListener(OnObjectSelected);
+        // Subscribe to the XR Interaction events specific to NextInteractable
+        myRunner.NextInteractable.onSelectEntered.AddListener(OnObjectSelected);
 
         while (waitingForParticipantResponse)
         {
+            // Debug.Log("Waiting for participant response...");
             yield return null;
         }
 
+        Debug.Log("Participant response received. Ending the trial.");
+
         // Unsubscribe from the XR Interaction events
-        myRunner.xrSimpleInteractable.onSelectEntered.RemoveListener(OnObjectSelected);
+        myRunner.NextInteractable.onSelectEntered.RemoveListener(OnObjectSelected);
     }
+
 
     private void OnObjectSelected(XRBaseInteractor interactor)
     {
@@ -233,36 +240,7 @@ public class ProximityTrial : Trial
         waitingForParticipantResponse = false;
     }
 
-    /*
-    THIS WORKS!
 
-
-    protected override IEnumerator RunMainCoroutine()
-       {
-            waitingForParticipantResponse = true;
-           Debug.Log("Press the spacebar or VR input to end this trial.");
-
-           // Wait for the next frame while allowing the rest of the program to run
-           yield return null;
-
-           // Subscribe to the XR Input event
-           myRunner.NextTrial.action.performed += OnNextTrialAction;
-
-           while (waitingForParticipantResponse)
-           {
-               yield return null;
-           }
-
-           // Unsubscribe from the XR Input event
-           myRunner.NextTrial.action.performed -= OnNextTrialAction;
-       }
-
-       private void OnNextTrialAction(InputAction.CallbackContext context)
-       {
-           Debug.Log("Next trial action performed.");
-           waitingForParticipantResponse = false;
-       }
-   */
 
     // Optional Post-Trial code. Useful for waiting for the participant to do something after each trial (multiple frames)
     protected override IEnumerator PostCoroutine()
@@ -278,7 +256,8 @@ public class ProximityTrial : Trial
         // How to write results to dependent variables: 
         Data["ProximityBegin"] = 2f;
         Data["TimeToEngage"] = 5f;
-
+        myRunner.PreTrial.SetActive(true);
+        myRunner.PostTrial.SetActive(false);
         inSceneAI.SetActive(false);
         InworldController.CurrentCharacter = null;
     }

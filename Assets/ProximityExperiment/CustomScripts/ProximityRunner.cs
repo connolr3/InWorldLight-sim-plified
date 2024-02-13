@@ -24,8 +24,12 @@ public class ProximityRunner : ExperimentRunner {
 public Transform SpawnA;
 public Transform SpawnB;
  public InputActionProperty NextTrial; 
-public XRSimpleInteractable xrSimpleInteractable;
+public XRSimpleInteractable NextInteractable;
+public XRSimpleInteractable ReadyInteractable;
 
+
+public GameObject PreTrial;
+public GameObject PostTrial;
 
 public InworldController inworldCon;
 

@@ -13,6 +13,7 @@ using Inworld;
 public class ProximityRunner : ExperimentRunner {
 
     //Here is where you make a list of objects in your unity scene that need to be referenced by your scripts.
+      public GameObject TeleportingInstructions;
     public GameObject [] NiceFemales;
       public GameObject [] NeutralFemales;
          public GameObject [] NiceMales;
@@ -42,6 +43,8 @@ public RawImage ImageHolder;
          public Texture [] NiceMalesPaintings;
       public Texture [] NeutralMalesPaintings;
     [HideInInspector]
+
+
 
 
 

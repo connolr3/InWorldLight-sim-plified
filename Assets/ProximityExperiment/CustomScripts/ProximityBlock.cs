@@ -15,43 +15,49 @@ using System.Collections;
 ///
 /// You cannot edit the main execution part of Blocks since their main execution is to run their trials.
 /// </summary>
-public class ProximityBlock : Block {
-    
+public class ProximityBlock : Block
+{
+
     // // You usually want to store a reference to your Experiment runner
-     ProximityRunner myRunner;
+    ProximityRunner myRunner;
     //DataTable trialTable myTable;
 
     // Required Constructor. Good place to set up references to objects in the unity scene
-    public ProximityBlock(ExperimentRunner runner, DataTable trialTable, DataRow data, int index) : base(runner, trialTable, data, index) {
-         myRunner = (ProximityRunner)runner;  //cast the generic runner to your custom type.
-      //   myTable = (DataTable) trialTable;
-        // GameObject myGameObject = myRunner.MyGameObject;  // get reference to gameObject stored in your custom runner
-    
+    public ProximityBlock(ExperimentRunner runner, DataTable trialTable, DataRow data, int index) : base(runner, trialTable, data, index)
+    {
+        myRunner = (ProximityRunner)runner;  //cast the generic runner to your custom type.
+                                             //   myTable = (DataTable) trialTable;
+                                             // GameObject myGameObject = myRunner.MyGameObject;  // get reference to gameObject stored in your custom runner
+
     }
 
-public GameObject rig;
-public  string[] components ;
+    public GameObject rig;
+    string thisBlocksLocomotion;
+    public string[] components;
     // Optional Pre-Block code. Useful for calibration and setup common to all blocks. Executes in a single frame at the start of the block
-    protected override void PreMethod() {
-       // Debug.Log(myTable);
-rig =  myRunner.MyRig;
-        string thisBlocksLocomotion = (string)Data["Locomotion"]; // Read values of independent variables
+    protected override void PreMethod()
+    {
+        rig = myRunner.MyRig;
+        thisBlocksLocomotion = (string)Data["Locomotion"]; // Read values of independent variables
         components = myRunner.Components;
-        if(thisBlocksLocomotion=="Walking"){
-           componentSet(false);
+        if (thisBlocksLocomotion == "Walking")
+        {
+            componentSet(false);
         }
-        else if (thisBlocksLocomotion=="Teleporting"){
-componentSet(true);
+        else if (thisBlocksLocomotion == "Teleporting")
+        {
+            componentSet(true);
         }
-        else{
-
+        else
+        {
             Debug.Log("Error in variable names... no matches found");
         }
         // myGameObject.transform.position = new Vector3(thisBlocksDistanceValue, 0, 0); // set up scene based on value
     }
 
-public void componentSet(bool enabled){
-     if (rig != null)
+    public void componentSet(bool enabled)
+    {
+        if (rig != null)
         {
             foreach (string componentName in components)
             {
@@ -70,27 +76,36 @@ public void componentSet(bool enabled){
                 }
             }
         }
-}
+    }
 
     // Optional Pre-Block code spanning multiple frames. Useful for pre-Block instructions.
     // Can execute over multiple frames at the start of a block
-    protected override IEnumerator PreCoroutine() {
-        yield return null; // yield return required for coroutine. Waits until next frame
-        
+    protected override IEnumerator PreCoroutine()
+    {
+        //  yield return null; // yield return required for coroutine. Waits until next frame
+        if (thisBlocksLocomotion == "Teleporting")
+        {
+            myRunner.TeleportingInstructions.SetActive(true);
+        }
         // Other ideas:
-        // yield return new WaitForSeconds(5);     Waits for 5 seconds worth of frames;
-        // can also wait for user input in a while-loop with a yield return null inside.
+        yield return new WaitForSeconds(10);// Waits for 5 seconds worth of frames;
+   // can also wait for user input in a while-loop with a yield return null inside.
+
+   // Set TeleportingInstructions back to false at the end
+   myRunner.TeleportingInstructions.SetActive(false);
     }
 
 
     // Optional Post-Block code spanning multiple frames. Useful for Block debrief instructions.
-    protected override IEnumerator PostCoroutine() {
+    protected override IEnumerator PostCoroutine()
+    {
         yield return null; //required for coroutine
     }
 
 
     // Optional Post-Block code.
-    protected override void PostMethod() {
+    protected override void PostMethod()
+    {
         // cleanup code (happens all in one frame at end of block)
     }
 }

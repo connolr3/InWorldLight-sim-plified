@@ -42,6 +42,8 @@ public class ProximityTrial : Trial
     // Optional Pre-Trial code. Useful for setting unity scene for trials. Executes in one frame at the start of each trial
     protected override void PreMethod()
     {
+        thisTemperment = (string)Data["Temperment"];
+        thisGender = (string)Data["AIGender"];
         getRandomIndex(thisTemperment, thisGender);
         setTrialVariables();
         if (thisScenesTexture != null)

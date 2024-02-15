@@ -14,10 +14,10 @@ public class ProximityRunner : ExperimentRunner {
 
     //Here is where you make a list of objects in your unity scene that need to be referenced by your scripts.
       public GameObject TeleportingInstructions;
-    public GameObject [] NiceFemales;
-      public GameObject [] NeutralFemales;
-         public GameObject [] NiceMales;
-      public GameObject [] NeutralMales;
+    public GameObject [] Females;
+      public GameObject [] Males;
+          public Texture [] FemalesPaintings;
+         public Texture [] MalesPaintings;
 
       public GameObject MyRig;
       public string[] Components;
@@ -38,20 +38,16 @@ public static string[] names;
 public RawImage ImageHolder;
 
 
-    public Texture [] NiceFemalesPaintings;
-      public Texture [] NeutralFemalesPaintings;
-         public Texture [] NiceMalesPaintings;
-      public Texture [] NeutralMalesPaintings;
+
     [HideInInspector]
 
 
 
 
 
-public bool[] NiceFemalesAccessed = new bool[4];
-public bool[] NeutralFemalesAccessed = new bool[4];
-public  bool[] NiceMalesAccessed = new bool[4];
-public bool[] NeutralMalesAccessed = new bool[4];
+public bool[] FemalesAccessed = new bool[6];
+public bool[] MalesAccessed = new bool[6];
+
 
 
 

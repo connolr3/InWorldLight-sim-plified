@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f52b7cbc1de94f2fbdaad822b4e3ef4, type: 3}
   m_Name: ProximityDesign
   m_EditorClassIdentifier: 
-  TrialRepetitions: 1
+  TrialRepetitions: 3
   ExperimentRepetitions: 1
   TrialRandomization: 1
   TrialPermutationType: 1
@@ -22,8 +22,6 @@ MonoBehaviour:
     IndependentVariables:
     - rid: 7370195277237714944
     - rid: 7370195277237714945
-    - rid: 7370195277237714947
-    - rid: 7370195355798601728
     DependentVariables:
     - rid: 7370195277237714946
     - rid: 7370195277237714948
@@ -71,8 +69,8 @@ MonoBehaviour:
         MixingType: 0
         Block: 1
         Values:
-        - Teleporting
         - Walking
+        - Teleporting
         Probabilities:
         - 0
         - 0
@@ -102,22 +100,6 @@ MonoBehaviour:
         ExpandSettings: 1
         Value: 0
         DefaultValue: 0
-    - rid: 7370195277237714947
-      type: {class: IndependentVariableString, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
-        asm: bmlTUX}
-      data:
-        Name: Temperment
-        VariableType: 1
-        DataType: 3
-        ExpandSettings: 1
-        MixingType: 0
-        Block: 0
-        Values:
-        - Nice
-        - Neutral
-        Probabilities:
-        - 0
-        - 0
     - rid: 7370195277237714948
       type: {class: DependentVariableFloat, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
         asm: bmlTUX}
@@ -138,20 +120,6 @@ MonoBehaviour:
         ExpandSettings: 1
         Value: 
         DefaultValue: 
-    - rid: 7370195355798601728
-      type: {class: IndependentVariableInt, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
-        asm: bmlTUX}
-      data:
-        Name: Index
-        VariableType: 1
-        DataType: 1
-        ExpandSettings: 1
-        MixingType: 0
-        Block: 0
-        Values: 0000000001000000
-        Probabilities:
-        - 0
-        - 0
     - rid: 7370195357903093760
       type: {class: ParticipantVariableInt, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
         asm: bmlTUX}

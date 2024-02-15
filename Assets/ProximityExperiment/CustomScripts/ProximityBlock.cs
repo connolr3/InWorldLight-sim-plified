@@ -82,8 +82,8 @@ public class ProximityBlock : Block
     // Can execute over multiple frames at the start of a block
     protected override IEnumerator PreCoroutine()
     {
-        //  yield return null; // yield return required for coroutine. Waits until next frame
-        if (thisBlocksLocomotion == "Teleporting")
+         // yield return null; // yield return required for coroutine. Waits until next frame
+       if (thisBlocksLocomotion == "Teleporting")
         {
             myRunner.TeleportingInstructions.SetActive(true);
         }

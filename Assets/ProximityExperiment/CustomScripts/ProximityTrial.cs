@@ -20,7 +20,7 @@ public class ProximityTrial : Trial
 
     ProximityRunner myRunner;
     string thisGender;
-    string thisTemperment;
+    //string thisTemperment;
 
     // Required Constructor.
     public ProximityTrial(ExperimentRunner runner, DataRow data) : base(runner, data)
@@ -42,9 +42,9 @@ public class ProximityTrial : Trial
     // Optional Pre-Trial code. Useful for setting unity scene for trials. Executes in one frame at the start of each trial
     protected override void PreMethod()
     {
-        thisTemperment = (string)Data["Temperment"];
+      //  thisTemperment = (string)Data["Temperment"];
         thisGender = (string)Data["AIGender"];
-        getRandomIndex(thisTemperment, thisGender);
+        getRandomIndex( thisGender);
         setTrialVariables();
         if (thisScenesTexture != null)
         {
@@ -76,24 +76,17 @@ public class ProximityTrial : Trial
         participantIsReady = true;
     }
 
-    public int getRandomIndex(string Temperment, string Gender)
+    public int getRandomIndex(string Gender)
     {
-        if (Gender == "Female" && Temperment == "Nice")
+        if (Gender == "Female" )
         {
-            checkOrder = myRunner.NiceFemalesAccessed;
+            checkOrder = myRunner.FemalesAccessed;
         }
-        else if (Gender == "Male" && Temperment == "Nice")
+        else if (Gender == "Male" )
         {
-            checkOrder = myRunner.NiceMalesAccessed;
+            checkOrder = myRunner.MalesAccessed;
         }
-        else if (Gender == "Female" && Temperment == "Neutral")
-        {
-            checkOrder = myRunner.NeutralFemalesAccessed;
-        }
-        else if (Gender == "Male" && Temperment == "Neutral")
-        {
-            checkOrder = myRunner.NeutralMalesAccessed;
-        }
+       
         else
         {
             Debug.Log("Error in variable names... no matches found");
@@ -113,22 +106,15 @@ public class ProximityTrial : Trial
     public void setAccessed()
     {
         Data["AccessIndex"] = AccessIndex;
-        if (thisGender == "Female" && thisTemperment == "Nice")
+        if (thisGender == "Female" )
         {
-            myRunner.NiceFemalesAccessed[AccessIndex] = true;
+            myRunner.FemalesAccessed[AccessIndex] = true;
         }
-        else if (thisGender == "Male" && thisTemperment == "Nice")
+        else if (thisGender == "Male")
         {
-            myRunner.NiceMalesAccessed[AccessIndex] = true;
+            myRunner.MalesAccessed[AccessIndex] = true;
         }
-        else if (thisGender == "Female" && thisTemperment == "Neutral")
-        {
-            myRunner.NeutralFemalesAccessed[AccessIndex] = true;
-        }
-        else if (thisGender == "Male" && thisTemperment == "Neutral")
-        {
-            myRunner.NeutralMalesAccessed[AccessIndex] = true;
-        }
+      
         else
         {
             Debug.Log("Error in variable names... no matches found");
@@ -138,28 +124,18 @@ public class ProximityTrial : Trial
     public void setTrialVariables()
     {
         // LastSceneAI=inSceneAI;
-        thisTemperment = (string)Data["Temperment"];
         thisGender = (string)Data["AIGender"];
-        if (thisGender == "Female" && thisTemperment == "Nice")
+        if (thisGender == "Female" )
         {
-            inSceneAI = myRunner.NiceFemales[AccessIndex];
-            thisScenesTexture = myRunner.NiceFemalesPaintings[AccessIndex];
+            inSceneAI = myRunner.Females[AccessIndex];
+            thisScenesTexture = myRunner.FemalesPaintings[AccessIndex];
         }
-        else if (thisGender == "Male" && thisTemperment == "Nice")
+        else if (thisGender == "Male" )
         {
-            inSceneAI = myRunner.NiceMales[AccessIndex];
-            thisScenesTexture = myRunner.NiceMalesPaintings[AccessIndex];
+            inSceneAI = myRunner.Males[AccessIndex];
+            thisScenesTexture = myRunner.MalesPaintings[AccessIndex];
         }
-        else if (thisGender == "Female" && thisTemperment == "Neutral")
-        {
-            inSceneAI = myRunner.NeutralFemales[AccessIndex];
-            thisScenesTexture = myRunner.NeutralFemalesPaintings[AccessIndex];
-        }
-        else if (thisGender == "Male" && thisTemperment == "Neutral")
-        {
-            inSceneAI = myRunner.NeutralMales[AccessIndex];
-            thisScenesTexture = myRunner.NeutralMalesPaintings[AccessIndex];
-        }
+       
         else
         {
             Debug.Log("Error in variable names... no matches found");

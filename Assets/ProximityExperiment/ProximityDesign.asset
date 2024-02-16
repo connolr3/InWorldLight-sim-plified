@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f52b7cbc1de94f2fbdaad822b4e3ef4, type: 3}
   m_Name: ProximityDesign
   m_EditorClassIdentifier: 
-  TrialRepetitions: 3
+  TrialRepetitions: 2
   ExperimentRepetitions: 1
   TrialRandomization: 1
   TrialPermutationType: 1

@@ -16,6 +16,22 @@ public class RecordActions : MonoBehaviour
         WriteToCSV(dataRow1);
     }
 
+     public void BeginTalk()
+    {
+        // Access the time and frame values here
+        //Debug.Log($"Teleported at Time: {currentTime}, Frame: {currentFrame}");
+        string[] dataRow1 = { currentFrame.ToString(), currentTime.ToString(), "AIStart"+InworldController.CurrentCharacter };
+        WriteToCSV(dataRow1);
+    }
+
+      public void EndTalk()
+    {
+        // Access the time and frame values here
+        //Debug.Log($"Teleported at Time: {currentTime}, Frame: {currentFrame}");
+        string[] dataRow1 = { currentFrame.ToString(), currentTime.ToString(), "AIEnd"+InworldController.CurrentCharacter };
+        WriteToCSV(dataRow1);
+    }
+
     public string filePath = "C:/Users/Rosie/Downloads/test";
 
     private RecordingManager recordingManager;

@@ -9,12 +9,13 @@ public class MatchTransform : MonoBehaviour
     public GameObject toMatch;
         public GameObject rig;
     public Transform targetMatch;
+
+     public Transform cameraOffset;
     public GameObject MainCamera;
- public InputActionProperty ResetPosition; 
+ //public InputActionProperty ResetPosition; 
 
     // Update is called once per frame
 void Start(){
-
 
 }
     void Update(){
@@ -22,9 +23,9 @@ void Start(){
         if(Input.GetKey("m")){
             Match();
         }
-        if(ResetPosition.action.ReadValue<float>()>0.5f){
-     Match();
-        }
+       // if(ResetPosition.action.ReadValue<float>()>0.5f){
+    // Match();
+       // }
     }
 
     private void MoveXROriginToFinalPos()
@@ -63,6 +64,9 @@ void Start(){
 
             // Apply the calculated rotation to toMatch
             toMatch.transform.rotation *= rotationNeeded;
+
+cameraOffset.position = new Vector3(cameraOffset.position.x, -1*MainCamera.transform.localPosition.y, cameraOffset.position.z);
+
             }
             else
             {

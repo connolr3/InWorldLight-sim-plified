@@ -13,10 +13,11 @@ using Inworld;
 public class ProximityRunner : ExperimentRunner {
 
     //Here is where you make a list of objects in your unity scene that need to be referenced by your scripts.
-    public GameObject [] NiceFemales;
-      public GameObject [] NeutralFemales;
-         public GameObject [] NiceMales;
-      public GameObject [] NeutralMales;
+      public GameObject TeleportingInstructions;
+    public GameObject [] Females;
+      public GameObject [] Males;
+          public Texture [] FemalesPaintings;
+         public Texture [] MalesPaintings;
 
       public GameObject MyRig;
       public string[] Components;
@@ -24,8 +25,12 @@ public class ProximityRunner : ExperimentRunner {
 public Transform SpawnA;
 public Transform SpawnB;
  public InputActionProperty NextTrial; 
-public XRSimpleInteractable xrSimpleInteractable;
+public XRSimpleInteractable NextInteractable;
+public XRSimpleInteractable ReadyInteractable;
 
+
+public GameObject PreTrial;
+public GameObject PostTrial;
 
 public InworldController inworldCon;
 
@@ -33,13 +38,24 @@ public static string[] names;
 public RawImage ImageHolder;
 
 
-    public Texture [] NiceFemalesPaintings;
-      public Texture [] NeutralFemalesPaintings;
-         public Texture [] NiceMalesPaintings;
-      public Texture [] NeutralMalesPaintings;
+
+    [HideInInspector]
+
+
+
+
+
+public bool[] FemalesAccessed = new bool[6];
+public bool[] MalesAccessed = new bool[6];
+
+
 
 
 public CSVReader csvReader;
+
+
+
+
 
  public void allocate(){
     names = new string[16];

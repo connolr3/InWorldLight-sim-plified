@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f52b7cbc1de94f2fbdaad822b4e3ef4, type: 3}
   m_Name: ProximityDesign
   m_EditorClassIdentifier: 
-  TrialRepetitions: 1
+  TrialRepetitions: 2
   ExperimentRepetitions: 1
   TrialRandomization: 1
   TrialPermutationType: 1
@@ -22,13 +22,12 @@ MonoBehaviour:
     IndependentVariables:
     - rid: 7370195277237714944
     - rid: 7370195277237714945
-    - rid: 7370195277237714947
-    - rid: 7370195355798601728
     DependentVariables:
     - rid: 7370195277237714946
     - rid: 7370195277237714948
     - rid: 7370195277237714949
     - rid: 321306078948360192
+    - rid: 321306168173789184
     ParticipantVariables:
     - rid: 7370195357903093760
   ExperimentSettings: {fileID: 11400000, guid: 718c8dd53465e7d41837773618a1edd7, type: 2}
@@ -49,6 +48,16 @@ MonoBehaviour:
         ExpandSettings: 1
         Value: 0
         DefaultValue: 0
+    - rid: 321306168173789184
+      type: {class: DependentVariableInt, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
+        asm: bmlTUX}
+      data:
+        Name: AccessIndex
+        VariableType: 2
+        DataType: 1
+        ExpandSettings: 1
+        Value: 0
+        DefaultValue: 0
     - rid: 7370195277237714944
       type: {class: IndependentVariableString, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
         asm: bmlTUX}
@@ -60,8 +69,8 @@ MonoBehaviour:
         MixingType: 0
         Block: 1
         Values:
-        - Teleporting
         - Walking
+        - Teleporting
         Probabilities:
         - 0
         - 0
@@ -91,22 +100,6 @@ MonoBehaviour:
         ExpandSettings: 1
         Value: 0
         DefaultValue: 0
-    - rid: 7370195277237714947
-      type: {class: IndependentVariableString, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
-        asm: bmlTUX}
-      data:
-        Name: Temperment
-        VariableType: 1
-        DataType: 3
-        ExpandSettings: 1
-        MixingType: 0
-        Block: 0
-        Values:
-        - Nice
-        - Neutral
-        Probabilities:
-        - 0
-        - 0
     - rid: 7370195277237714948
       type: {class: DependentVariableFloat, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
         asm: bmlTUX}
@@ -127,20 +120,6 @@ MonoBehaviour:
         ExpandSettings: 1
         Value: 
         DefaultValue: 
-    - rid: 7370195355798601728
-      type: {class: IndependentVariableInt, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
-        asm: bmlTUX}
-      data:
-        Name: Index
-        VariableType: 1
-        DataType: 1
-        ExpandSettings: 1
-        MixingType: 0
-        Block: 0
-        Values: 0000000001000000
-        Probabilities:
-        - 0
-        - 0
     - rid: 7370195357903093760
       type: {class: ParticipantVariableInt, ns: bmlTUX.Scripts.VariableSystem.VariableTypes,
         asm: bmlTUX}
@@ -149,7 +128,7 @@ MonoBehaviour:
         VariableType: 3
         DataType: 1
         ExpandSettings: 1
-        Value: 23
+        Value: 25
         ConstrainValues: 0
         Values: 
         PossibleValues: 

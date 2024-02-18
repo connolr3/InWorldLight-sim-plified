@@ -35,6 +35,7 @@ public class ProximityExperiment : Experiment {
 
     // Optional Pre-Experiment code. Useful for pre-experiment instructions.
     protected override IEnumerator PreCoroutine() {
+
         yield return null; //required for coroutine
     }
 
